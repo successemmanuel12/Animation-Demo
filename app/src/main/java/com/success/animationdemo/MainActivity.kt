@@ -1,41 +1,43 @@
 package com.success.animationdemo
 
 import android.os.Bundle
-import android.transition.Fade
-
-import android.transition.Slide
+import android.transition.ChangeBounds
 import android.transition.TransitionManager
-import android.view.Gravity
-import android.view.View
+import android.view.animation.AnticipateInterpolator
+import android.view.animation.AnticipateOvershootInterpolator
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity() {
 
-	private var visibility = false
+    private var isDetailLayout = false
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
+        constraintLayout.setOnClickListener {
+            if (isDetailLayout)
+               swapFrames(R.layout.activity_main) // switch to default layout
+            else
+               swapFrames(R.layout.activity_main_detail) // switch to detail layout
+        }
+    }
 
-	}
+    private fun swapFrames(layoutId: Int){
 
-	fun fadeAnimation(view: View) {
-		val transition = Fade()
-		TransitionManager.beginDelayedTransition(sceneRoot, transition)
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(this, layoutId)
 
-		txvDescription.visibility = if (visibility) View.INVISIBLE else View.VISIBLE
-		visibility = !visibility
-	}
+        val transition = ChangeBounds()
+        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+        transition.duration = 1200
 
-	fun slideEffect(view: View) {
+        TransitionManager.beginDelayedTransition(constraintLayout, transition)
+        constraintSet.applyTo(constraintLayout)
 
-		val transition = Slide(Gravity.END)
-		TransitionManager.beginDelayedTransition(sceneRoot, transition)
+        isDetailLayout = !isDetailLayout
 
-		txvDescription.visibility = if (visibility) View.INVISIBLE else View.VISIBLE
-		visibility = !visibility
-	}
+    }
 }
