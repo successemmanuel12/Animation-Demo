@@ -11,7 +11,14 @@
     <fade
         android:duration="250"
         android:startDelay="400"
-        android:fadingMode="fade_in_out">
+        android:fadingMode="fade_in">
+        <targets>
+            <target android:targetId="@+id/txvTitle"/>
+        </targets>
+    </fade>
+    <fade
+        android:duration="50"
+        android:fadingMode="fade_out">
         <targets>
             <target android:targetId="@+id/txvTitle"/>
         </targets>
