@@ -1,37 +1,61 @@
 package com.success.animationdemo
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.sriyank.animationsdemo.Landscape
-import com.sriyank.animationsdemo.RecyclerAdapter
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import jp.wasabeef.recyclerview.animators.*
+import androidx.viewpager.widget.ViewPager
+import com.success.animationdemo.transformers.*
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+    public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-		setUpRecyclerView()
-	}
+        val imageArray = intArrayOf(
+            R.drawable.first, R.drawable.second,
+            R.drawable.third, R.drawable.fourth, R.drawable.fifth
+        )
 
-	private fun setUpRecyclerView() {
+        val adapter = ViewPagerAdapter(this@MainActivity, imageArray)
+        viewPager!!.adapter = adapter
+    }
 
-		val adapter = RecyclerAdapter(this, Landscape.data)
-		recyclerView.adapter = ScaleInAnimationAdapter(adapter)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
 
-		val layoutManager = LinearLayoutManager(this)
-		layoutManager.orientation = LinearLayoutManager.VERTICAL 
-		recyclerView.layoutManager = layoutManager
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-		recyclerView.itemAnimator = ScaleInBottomAnimator()
-		recyclerView.itemAnimator?.apply {
-			addDuration = 500 //duration of add operation
-			removeDuration = 500 //duration of delete operation
-		}
-	}
+        val id = item.itemId
+
+        when (id) {
+
+            R.id.zoom_out       -> setPageTransformer(ZoomOutTransformation())
+            R.id.depth_page     -> setPageTransformer(DepthPageTransformation())
+            R.id.vertical_flip  -> setPageTransformer(VerticalFlipTransformation())
+            R.id.fade_out       -> setPageTransformer(FadeOutTransformation())
+            R.id.cube_out       -> setPageTransformer(CubeOutDepthTransformation())
+            R.id.hinge          -> setPageTransformer(HingeTransformation())
+            R.id.cube_in        -> setPageTransformer(CubeInDepthTransformation())
+            R.id.cube_in_scaling -> setPageTransformer(CubeInScalingTransformation())
+            R.id.cube_out_rotation -> setPageTransformer(CubeOutRotationTransformation())
+            R.id.cube_out_scaling -> setPageTransformer(CubeOutScalingTransformation())
+            R.id.fan            -> setPageTransformer(FanTransformation())
+            R.id.gate           -> setPageTransformer(GateTransformation())
+            R.id.pop            -> setPageTransformer(Rotation())
+            R.id.spinner        -> setPageTransformer(SpinnerTransformation())
+            R.id.vertical_shut  -> setPageTransformer(VerticalShutTransformation())
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setPageTransformer(transformer: ViewPager.PageTransformer ) {
+        viewPager!!.setPageTransformer(true, transformer)
+    }
 }
-

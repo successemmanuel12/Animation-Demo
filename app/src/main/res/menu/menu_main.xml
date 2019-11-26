@@ -1,0 +1,102 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/zoom_out"
+        android:orderInCategory="100"
+        android:title="Zoom Out"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/depth_page"
+        android:orderInCategory="100"
+        android:title="Depth Page"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vertical_flip"
+        android:orderInCategory="100"
+        android:title="Vertical Flip"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fade_out"
+        android:orderInCategory="100"
+        android:title="Fade Out"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cube_out"
+        android:orderInCategory="100"
+        android:title="Cube Out"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/hinge"
+        android:orderInCategory="100"
+        android:title="Hinge"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cube_in"
+        android:orderInCategory="100"
+        android:title="Cube In"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cube_in_scaling"
+        android:orderInCategory="100"
+        android:title="Cube in Scaling"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cube_out_rotation"
+        android:orderInCategory="100"
+        android:title="Cube Out Rotation"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cube_out_scaling"
+        android:orderInCategory="100"
+        android:title="Cube Out Scaling"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fan"
+        android:orderInCategory="100"
+        android:title="Fan"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/gate"
+        android:orderInCategory="100"
+        android:title="Gate"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/pop"
+        android:orderInCategory="100"
+        android:title="Pop"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/rotation"
+        android:orderInCategory="100"
+        android:title="Rotation"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/spinner"
+        android:orderInCategory="100"
+        android:title="Spinner"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vertical_shut"
+        android:orderInCategory="100"
+        android:title="Vertical Shut"
+        app:showAsAction="never" />
+
+</menu>
