@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sriyank.animationsdemo.Landscape
 import com.sriyank.animationsdemo.RecyclerAdapter
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 import jp.wasabeef.recyclerview.animators.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 	private fun setUpRecyclerView() {
 
 		val adapter = RecyclerAdapter(this, Landscape.data)
-		recyclerView.adapter = adapter
+		recyclerView.adapter = ScaleInAnimationAdapter(adapter)
 
 		val layoutManager = LinearLayoutManager(this)
 		layoutManager.orientation = LinearLayoutManager.VERTICAL 
